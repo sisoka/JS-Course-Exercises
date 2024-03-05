@@ -68,31 +68,31 @@
 
 // YOUR CODE HERE
 
-function createStudent(name, age, grades){
-    let student = {
-        name : name,
-        age  : age,
-        grades : grades,
-        calculateAverageGrade : function(){
-            let sum = 0;
-            for (let i = 0; i < grades.length; i++) {
-                const currentGrade = grades[i];
-                sum = sum + currentGrade;
-            }
-            if (grades.length > 0){
-                return sum / grades.length;
-            }
-            else{
-                return 0;
-            }
-        }
-    }
-    return student;
-}
+// function createStudent(name, age, grades){
+//     let student = {
+//         name : name,
+//         age  : age,
+//         grades : grades,
+//         calculateAverageGrade : function(){
+//             let sum = 0;
+//             for (let i = 0; i < grades.length; i++) {
+//                 const currentGrade = grades[i];
+//                 sum = sum + currentGrade;
+//             }
+//             if (grades.length > 0){
+//                 return sum / grades.length;
+//             }
+//             else{
+//                 return 0;
+//             }
+//         }
+//     }
+//     return student;
+// }
 
-// TEST
-const student1 = createStudent("John", 20, [80, 85, 90]);
-console.log(student1.calculateAverageGrade()); // Expected output: 85
+// // TEST
+// const student1 = createStudent("John", 20, [80, 85, 90]);
+// console.log(student1.calculateAverageGrade()); // Expected output: 85
 
 
 
@@ -120,15 +120,36 @@ console.log(student1.calculateAverageGrade()); // Expected output: 85
 
 // YOUR CODE HERE
 
+function memoize(f){
+   const cache = {};
+
+   function wrapper(x){
+      if(cache[x]){
+         return cache[x]
+      }
+      else{
+         let result = f(x)
+         cache[x] = result;
+         return result;
+      }
+   };
+   
+   return wrapper;
+}
 
 // TEST
-// function fibonacci(n) {
-//     if (n <= 1) {
-//         return n;
-//     }
-//     return fibonacci(n - 1) + fibonacci(n - 2);
-// }
+function fibonacci(n) {
+    if (n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
 
-// const memoizedFibonacci = memoize(fibonacci);
-// console.log(memoizedFibonacci(10)); // Expected output: 55
-// console.log(memoizedFibonacci(10)); // Expected output: 55 (calculated efficiently with memoization)
+const memoizedFibonacci = memoize(fibonacci);
+console.time('first');
+console.log(memoizedFibonacci(10)); // Expected output: 55
+console.timeEnd('first');
+
+console.time('second');
+console.log(memoizedFibonacci(10)); // Expected output: 55 (calculated efficiently with memoization)
+console.timeEnd('second');
