@@ -66,24 +66,41 @@
 // where r is the radius and h is the height of the cylinder.
 // Solution
 
-function Cylinder(height, radius) {
-    this.height = height;
-    this.radius = radius;
-    this.volume = function(){
-        return (Math.PI * Math.pow(radius, 2) * this.height).toFixed(4);
-    }
-  }
+// function Cylinder(height, radius) {
+//     this.height = height;
+//     this.radius = radius;
+//     this.volume = function(){
+//         return (Math.PI * Math.pow(radius, 2) * this.height).toFixed(4);
+//     }
+//   }
 
-const myCylinder = new Cylinder(7,3);
+// const myCylinder = new Cylinder(7,3);
 
-console.log(myCylinder.volume());
+// console.log(myCylinder.volume());
 
 // 6. Write a bubble sort algorithm in JavaScript.
 // Note : Bubble sort is a simple sorting algorithm that works by repeatedly stepping through the list to be sorted,
 // Sample Data: [6,4,0, 3,-2,1]
 // Expected Output : [-2, 0, 1, 3, 4, 6]
-// Click me to see the solution
+// Solution
 
+// const array = [0,6,4,3,-2,1];
+// const sortedArray = array;
+// function swap (position1, position2, arr){
+//     var temp = arr[position1];
+//     arr[position1] = arr[position2];
+//     arr[position2] = temp;
+// }
+
+// for (let i = 0; i < array.length; i++) {
+//     for (let j = 0; j < array.length; j++) {        
+//         if (array[j] > array[j+1]){
+//             swap(j,j+1,array);      
+//         }
+//     }
+// }
+
+// console.log(array);
 // 7. Write a JavaScript program that returns a subset of a string.
 // Sample Data: dog
 // Expected Output: ["d", "do", "dog", "o", "og", "g"]
@@ -98,7 +115,17 @@ console.log(myCylinder.volume());
 // "14:37:45"
 // "14:37:46"
 // "14:37:47"
-// Click me to see the solution
+// Solution
+function logCurrentTime(){
+
+    let now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();        
+    console.log(`${hours}:${minutes}:${seconds}`);
+}
+
+setInterval(logCurrentTime, 1000);
 
 // 9. Write a JavaScript program to calculate circle area and perimeter.
 // Note : Create two methods to calculate the area and perimeter. The radius of the circle will be supplied by the user.
