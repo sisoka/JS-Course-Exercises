@@ -116,20 +116,39 @@
 // "14:37:46"
 // "14:37:47"
 // Solution
-function logCurrentTime(){
+// function logCurrentTime(){
 
-    let now = new Date();
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    let seconds = now.getSeconds();        
-    console.log(`${hours}:${minutes}:${seconds}`);
-}
+//     let now = new Date();
+//     let hours = now.getHours();
+//     let minutes = now.getMinutes();
+//     let seconds = now.getSeconds();        
+//     console.log(`${hours}:${minutes}:${seconds}`);
+// }
 
-setInterval(logCurrentTime, 1000);
+// setInterval(logCurrentTime, 1000);
 
 // 9. Write a JavaScript program to calculate circle area and perimeter.
 // Note : Create two methods to calculate the area and perimeter. The radius of the circle will be supplied by the user.
-// Click me to see the solution
+// Solution
+
+//S = p.r.r, P = 2.p.r
+
+function Cyrcle (radius){
+    this.radius = radius,
+    this.calculateArea = function(){
+        //console.log(this);
+        return Math.PI * Math.pow(this.radius, 2);
+
+    };
+    this.calculatePerimeter = function(){
+        //console.log(this);
+        return 2 * Math.PI * this.radius;
+    }
+}
+
+const cyrcle1 = new Cyrcle(5);
+console.log(cyrcle1.calculateArea());
+console.log(cyrcle1.calculatePerimeter());
 
 // 10. Write a JavaScript program to sort an array of JavaScript objects.
 // Sample Object :
