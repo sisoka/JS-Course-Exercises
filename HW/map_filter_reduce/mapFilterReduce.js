@@ -21,32 +21,32 @@
 // TASK 3 calculate product prices
 
 // Given is next Array of Objects:
-const products = [
-	{
-		code:1,
-		name:"product1",
-		category: "music",
-		price:1
-	},
-	{
-		code:2,
-		name:"product2",
-		category: "books",
-		price:2
-	},
-	{
-		code:3,
-		name:"product3",
-		category: "books",
-		price:3
-	},
-	{
-		code:4,
-		name:"product4",
-		category: "music",
-		price:4
-	}
-]
+// const products = [
+// 	{
+// 		code:1,
+// 		name:"product1",
+// 		category: "music",
+// 		price:1
+// 	},
+// 	{
+// 		code:2,
+// 		name:"product2",
+// 		category: "books",
+// 		price:2
+// 	},
+// 	{
+// 		code:3,
+// 		name:"product3",
+// 		category: "books",
+// 		price:3
+// 	},
+// 	{
+// 		code:4,
+// 		name:"product4",
+// 		category: "music",
+// 		price:4
+// 	}
+// ]
 
 /* -------------------------------------------------------------------------- */
 /*                                   TASK3:                                   */
@@ -99,32 +99,32 @@ const products = [
 //for given todoID
 // Make sure, that the original todos array is not changed!
 
-const todos = [
-    {
-      "title": "Lean HMTL",
-      "completed": true,
-      "id": 1
-    },
-    {
-      "title": "Lean React",
-      "completed": false,
-      "id": 2
-    }
-];
+// const todos = [
+//     {
+//       "title": "Lean HMTL",
+//       "completed": true,
+//       "id": 1
+//     },
+//     {
+//       "title": "Lean React",
+//       "completed": false,
+//       "id": 2
+//     }
+// ];
 
-const todoID = 2;
+// const todoID = 2;
 
-/* ----------------------------- YOUR CODE HERE ----------------------------- */
+// /* ----------------------------- YOUR CODE HERE ----------------------------- */
 
-let jsonString = JSON.stringify(todos);
+// let jsonString = JSON.stringify(todos);
 
-let newTodos = JSON.parse(jsonString);
+// let newTodos = JSON.parse(jsonString);
 
-newTodos.filter(x => x.id == todoID).map(x => x.completed = !x.completed);
+// newTodos.filter(x => x.id == todoID).map(x => x.completed = !x.completed);
 
-/* ---------------------------------- TEST ---------------------------------- */
-console.log(`Original todos:`, todos);
-console.log(`New todos:`, newTodos);
+// /* ---------------------------------- TEST ---------------------------------- */
+// console.log(`Original todos:`, todos);
+// console.log(`New todos:`, newTodos);
 
 
 /* ----------------------------- EXPECTED OUTPUT ---------------------------- */
@@ -141,3 +141,108 @@ console.log(`New todos:`, newTodos);
 
 
 
+/* ----------------------------- TASK 6 ----------------------------- */
+// TASK: getCityNameWithMinimalPopulation
+// Implement findMinPopulationCityName function, so that it will return the
+// name of the city with minimum population
+
+// const cities = [
+// 	{name: 'Sofia', population: 1_236_000},
+// 	{name: 'Plovdiv', population: 343_424 },
+// 	{name: 'Burgas', population: 202_766},
+// 	{name: 'Varna', population: 335_177},
+// ];
+
+// function findMinPopulationCityName(cities) {
+//     // let lowestPopulation = Math.min(...cities.map(x => x.population));
+//     // let cityName = cities.filter(city => city.population == lowestPopulation)[0].name;
+
+//     // return cityName;
+//     return cities.find(city => city.population == Math.min(...cities.map(x => x.population))).name;
+// }
+
+// // TEST:
+// const minCityName = findMinPopulationCityName(cities);
+// console.log( minCityName );
+
+// // EXPECTED OUTPUT:
+// // 'Burgas'
+
+/* ---------------------------------- TASK 7---------------------------------- */
+// Implement the groupProductsByCategory() function, which takes an array of
+// products as input and returns an array of products grouped by category,
+// as given in EXPECTED OUTPUT section bellow
+
+// GIVEN:
+const products = [
+	{
+		code:1,
+		name:"product1",
+		category: "music",
+		price:1
+	},
+	{
+		code:2,
+		name:"product2",
+		category: "books",
+		price:2
+	},
+	{
+		code:3,
+		name:"product3",
+		category: "books",
+		price:3
+	},
+	{
+		code:4,
+		name:"product4",
+		category: "music",
+		price:4
+	}
+]
+
+
+//YOUT CODE HERE
+
+function createNewObjWithCategoriesProp (products){
+    let groupedProducts = {};
+
+    products.forEach(product => {
+        if(!groupedProducts[product.category]){
+            groupedProducts[product.category] = []
+        }
+
+        groupedProducts[product.category].push(product);
+    });
+
+    return groupedProducts;
+}
+
+console.log(createNewObjWithCategoriesProp(products));
+
+// let newObj = {};
+// var props = ['music', 'books'];
+
+// //get categories
+// let categories = [...new Set([...products].map(x => x.category))];
+// console.log(categories);
+
+//with for of dynamically we can set the name of the properties as below. 
+//TODO: The array of object that need to be assigned to each property should be filtered
+
+
+// for (const element of props) {
+//     newObj[element] = [{name:'name1', category:'general Category'}, {name:'name2', category:'general Category'}];
+// }
+// console.log(newObj);
+// EXPECTED OUTPUT:
+// {
+// 	music: [
+// 		{ code: 1, name: 'product1', category: 'music', price: 1 },
+// 		{ code: 4, name: 'product4', category: 'music', price: 4 }
+// 	],
+// 	books: [
+// 		{ code: 2, name: 'product2', category: 'books', price: 2 },
+// 		{ code: 3, name: 'product3', category: 'books', price: 3 }
+// 	]
+// }
